@@ -20,6 +20,7 @@
             padding: 0 5px;
         }
     </style>
+    <script src="https://raw.github.com/stevenschobert/instafeed.js/master/instafeed.min.js'"></script>
 </head>
 
 <body>
@@ -37,7 +38,6 @@
             navigator.serviceWorker.register(`${prefix}/service-worker.js`);
         });
     }
-    importScripts('https://raw.github.com/stevenschobert/instafeed.js/master/instafeed.min.js');
     var feed = new Instafeed({
         get: 'user',
         userId: '4725130256',
