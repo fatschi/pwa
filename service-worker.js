@@ -25,6 +25,7 @@ workbox.routing.registerRoute(
             {
                 requestWillFetch: async ({ request }) => {
                     console.log("foo")
+                    return request;
                 },
                 fetchDidFail: async ({ originalRequest, request, error, event }) => {
                     console.log("bar")
