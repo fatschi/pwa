@@ -26,10 +26,7 @@
 
 <body>
     <h1>Workbox Cross Origin</h1>
-    <div>
-        <img src="https://scontent.cdninstagram.com/vp/7cc84271bf2c4eee1cb46c4ab3112959/5C8FD4BE/t51.2885-15/sh0.08/e35/p640x640/46228533_870288893179238_1941684680784871424_n.jpg">
-        <img src="https://scontent.cdninstagram.com/vp/23581436e8a886368a6c4792a0bd4af3/5CB23F9F/t51.2885-15/sh0.08/e35/p640x640/45390364_546064699200036_3627969702543753216_n.jpg">
-        <img src="https://scontent.cdninstagram.com/vp/62e962031a97926c4964d7619b4b518b/5C7467AC/t51.2885-15/sh0.08/e35/p640x640/45308665_559126294527076_6329704221369171968_n.jpg">
+    <div id="insta">
     </div>
 </body>
 <script>
@@ -45,25 +42,7 @@
         accessToken: '4725130256.1677ed0.3eddbc3d1f0e458486c8f9a99f449552',
         resolution: 'standard_resolution',
         sortBy: 'most-recent',
-        mock: true,
-        onSuccess: (response) => {
-            if (response.data) {
-                const newImages = response.data.filter((image) => {
-                    fetch(image.images.standard_resolution.url, {
-                        method: 'get'
-                    }).then(function (response) {
-                        console.log(response);
-                    }).catch(function (err) {
-                        //
-                        return true || image.tags.indexOf('fatschissuperduperfahrradreiseblog') > -1;
-                    });
-                    return true || image.tags.indexOf('fatschissuperduperfahrradreiseblog') > -1;
-                });
-                const images = this.state.images;
-                console.log(images);
-            }
-            //feed.next();
-        }
+        target: 'insta'
     });
     feed.run();
 </script>
