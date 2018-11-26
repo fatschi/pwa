@@ -2,12 +2,6 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.0.0/workbox
 workbox.core.setLogLevel(workbox.core.LOG_LEVELS.debug);
 
 const CACHE_NAME = 'fatschi-pwa';
-workbox.routing.registerRoute(
-    /assets\/.*\.(?:)/,
-    workbox.strategies.staleWhileRevalidate({
-        cacheName: `${CACHE_NAME}:static`,
-    }),
-);
 
 workbox.routing.registerRoute(
     /.*\.(?:html|js|json|ico|png|css)/,
@@ -16,7 +10,7 @@ workbox.routing.registerRoute(
     }),
 );
 
-workbox.routing.registerRoute(
+/*workbox.routing.registerRoute(
     new RegExp('https://scontent\.cdninstagram\.com/'),
     workbox.strategies.staleWhileRevalidate({
         cacheName: `${CACHE_NAME}:images`
@@ -28,7 +22,7 @@ workbox.routing.registerRoute(
     workbox.strategies.staleWhileRevalidate({
         cacheName: `${CACHE_NAME}:api`
     }),
-);
+);*/
 
 self.addEventListener('install', function () {
     // For Develop Only
