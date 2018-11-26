@@ -24,8 +24,9 @@ workbox.routing.registerRoute(
         plugins: [
             {
                 requestWillFetch: async ({ request }) => {
-                    console.log("foo")
-                    return request;
+                    const url = new URL(request.url);
+                    url.searchParams.set('callback', '');
+                    return new Request(url.href, { headers: request.headers });
                 },
                 fetchDidFail: async ({ originalRequest, request, error, event }) => {
                     console.log("bar")
