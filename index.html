@@ -37,6 +37,34 @@
             navigator.serviceWorker.register(`${prefix}/service-worker.js`);
         });
     }
+    importScripts('https://raw.github.com/stevenschobert/instafeed.js/master/instafeed.min.js');
+    var feed = new Instafeed({
+        get: 'user',
+        userId: '4725130256',
+        accessToken: '4725130256.1677ed0.3eddbc3d1f0e458486c8f9a99f449552',
+        resolution: 'standard_resolution',
+        sortBy: 'most-recent',
+        mock: true,
+        onSuccess: (response) => {
+            if (response.data) {
+                const newImages = response.data.filter((image) => {
+                    fetch(image.images.standard_resolution.url, {
+                        method: 'get'
+                    }).then(function (response) {
+                        console.log(response);
+                    }).catch(function (err) {
+                        //
+                        return true || image.tags.indexOf('fatschissuperduperfahrradreiseblog') > -1;
+                    });
+                    return true || image.tags.indexOf('fatschissuperduperfahrradreiseblog') > -1;
+                });
+                const images = this.state.images;
+                this.setState({ images: images.concat(newImages) });
+            }
+            //feed.next();
+        }
+    });
+    feed.run();
 </script>
 
 </html>
