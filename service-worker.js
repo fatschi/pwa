@@ -25,7 +25,7 @@ workbox.routing.registerRoute(
             {
                 requestWillFetch: async ({ request }) => {
                     const url = new URL(request.url);
-                    url.searchParams.set('callback', '');
+                    url.searchParams.set('callback', 'instafeedCache123.parse');
                     return new Request(url.href, { headers: request.headers });
                 },
                 fetchDidFail: async ({ originalRequest, request, error, event }) => {
