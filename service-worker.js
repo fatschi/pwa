@@ -5,21 +5,21 @@ const CACHE_NAME = 'fatschi-pwa';
 
 workbox.routing.registerRoute(
     /.*\.(?:html|js)/,
-    workbox.strategies.StaleWhileRevalidate({
+    workbox.strategies.staleWhileRevalidate({
         cacheName: `${CACHE_NAME}:static`,
     }),
 );
 
 workbox.routing.registerRoute(
     new RegExp('https://scontent\.cdninstagram\.com/'),
-    workbox.strategies.StaleWhileRevalidate({
+    workbox.strategies.staleWhileRevalidate({
         cacheName: `${CACHE_NAME}:images`
     }),
 );
 
 workbox.routing.registerRoute(
     new RegExp('https://api\.instagram\.com/'),
-    workbox.strategies.StaleWhileRevalidate({
+    workbox.strategies.staleWhileRevalidate({
         cacheName: `${CACHE_NAME}:api`
     }),
 );
