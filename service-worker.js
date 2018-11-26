@@ -1,15 +1,27 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.0.0/workbox-sw.js');
+workbox.core.setLogLevel(workbox.core.LOG_LEVELS.debug);
 
 const CACHE_NAME = 'workbox:cross-origin';
 
-// Cache all
-const REGEXP_ALL = /.*\.(?:html|js|css|png|jpg|jpeg|svg|gif)/;
-
-// [OK] Stale While Revalidate
 workbox.routing.registerRoute(
-    REGEXP_ALL,
-    workbox.strategies.staleWhileRevalidate({
-        cacheName: `${CACHE_NAME}:stale-while-revalidate`,
+    /.*\.(?:html)/,
+    workbox.strategies.cacheFirst({
+        cacheName: `${CACHE_NAME}:cache-first`,
+    }),
+);
+
+// Force Caching of Opaque Responses
+// https://developers.google.com/web/tools/workbox/reference-docs/latest/workbox.cacheableResponse.Plugin
+workbox.routing.registerRoute(
+    new RegExp('http://scontent\.cdninstagram\.com'),
+    workbox.strategies.cacheFirst({
+        cacheName: `${CACHE_NAME}:cache-first`,
+        plugins: [
+            // Force Cache
+            new workbox.cacheableResponse.Plugin({
+                statuses: [0, 200], // One or more status codes that a Response can have and be considered cacheable.
+            }),
+        ]
     }),
 );
 
