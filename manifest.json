@@ -1,10 +1,10 @@
 {
   "name": "fatschissuperduperfahrradreiseblog.de",
-  "short_name": "fatschiblog2",
+  "short_name": "fatschiblog",
   "start_url": "/pwa/index.html",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#fff",
+  "background_color": "#77bcd7",
   "theme_color": "#77bcd7",
   "icons": [
     {

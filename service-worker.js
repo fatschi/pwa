@@ -3,14 +3,14 @@ workbox.core.setLogLevel(workbox.core.LOG_LEVELS.debug);
 
 const CACHE_NAME = 'fatschi-pwa';
 workbox.routing.registerRoute(
-    /assets\/.*\.(?:ico|png)/,
+    /assets\/.*\.(?:)/,
     workbox.strategies.staleWhileRevalidate({
         cacheName: `${CACHE_NAME}:static`,
     }),
 );
 
 workbox.routing.registerRoute(
-    /.*\.(?:html|js|json)/,
+    /.*\.(?:html|js|json|ico|png|css)/,
     workbox.strategies.staleWhileRevalidate({
         cacheName: `${CACHE_NAME}:static`,
     }),

@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <title>fatschissuperduperfahrradreiseblog.de</title>
     <meta charset="UTF-8">
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0">
@@ -11,20 +12,24 @@
         href="assets/favicon.ico">
     <link rel="manifest"
         href="manifest.json">
+    <link rel="stylesheet"
+        type="text/css"
+        href="style.css"
+        media="screen" />
     <meta name="theme-color"
         content="#77bcd7">
-    <style>
-        img {
-            max-width: 100%;
-        }
-    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/preact/8.3.1/preact.min.js"></script>
+    <script>window.React = { createElement: preact.h }</script>
+    <script type="text/babel"
+        src="app.js"></script>
 </head>
 
 <body>
-    <img src="assets/icon_big.png"></img>
-    <h1>hallo</h1>
+    <div id="root"></div>
     <div id="insta">
     </div>
+
 </body>
 <script>
     if ('serviceWorker' in navigator) {
@@ -46,8 +51,9 @@
             }
         })
         .catch(function (error) {
-            console.log(JSON.stringify(error));
-        });   
+            console.error(JSON.stringify(error));
+        });
+
 </script>
 
 </html>
