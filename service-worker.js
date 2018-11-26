@@ -2,16 +2,15 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.0.0/workbox
 workbox.core.setLogLevel(workbox.core.LOG_LEVELS.debug);
 
 const CACHE_NAME = 'fatschi-pwa';
-
 workbox.routing.registerRoute(
-    /.*\.(?:html|js|json)/,
+    /assets\/.*\.(?:ico|png)/,
     workbox.strategies.staleWhileRevalidate({
         cacheName: `${CACHE_NAME}:static`,
     }),
 );
 
 workbox.routing.registerRoute(
-    /assets\/.*\.(?:ico|png)/,
+    /.*\.(?:html|js|json)/,
     workbox.strategies.staleWhileRevalidate({
         cacheName: `${CACHE_NAME}:static`,
     }),
