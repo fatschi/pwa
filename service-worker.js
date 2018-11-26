@@ -20,19 +20,7 @@ workbox.routing.registerRoute(
 workbox.routing.registerRoute(
     new RegExp('https://api\.instagram\.com/'),
     workbox.strategies.staleWhileRevalidate({
-        cacheName: `${CACHE_NAME}:api`,
-        plugins: [
-            {
-                requestWillFetch: async ({ request }) => {
-                    const url = new URL(request.url);
-                    url.searchParams.set('callback', 'instafeedCache123.parse');
-                    return new Request(url.href, { headers: request.headers });
-                },
-                fetchDidFail: async ({ originalRequest, request, error, event }) => {
-                    console.log("bar")
-                }
-            }
-        ]
+        cacheName: `${CACHE_NAME}:api`
     }),
 );
 
