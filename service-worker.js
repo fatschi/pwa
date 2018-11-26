@@ -14,13 +14,23 @@ workbox.routing.registerRoute(
     new RegExp('https://scontent\.cdninstagram\.com/'),
     workbox.strategies.staleWhileRevalidate({
         cacheName: `${CACHE_NAME}:images`
-    }),
+    })
 );
 
 workbox.routing.registerRoute(
     new RegExp('https://api\.instagram\.com/'),
     workbox.strategies.staleWhileRevalidate({
-        cacheName: `${CACHE_NAME}:api`
+        cacheName: `${CACHE_NAME}:api`,
+        plugins: [
+            {
+                requestWillFetch: async ({ request }) => {
+                    console.log("foo")
+                },
+                fetchDidFail: async ({ originalRequest, request, error, event }) => {
+                    console.log("bar")
+                }
+            }
+        ]
     }),
 );
 
