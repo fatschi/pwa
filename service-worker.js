@@ -6,7 +6,7 @@ const CACHE_NAME = 'fatschi-pwa';
 workbox.routing.registerRoute(
     /.*\.(?:html)/,
     workbox.strategies.cacheFirst({
-        cacheName: `${CACHE_NAME}:cache-first`,
+        cacheName: `${CACHE_NAME}:network-first`,
     }),
 );
 
@@ -15,7 +15,7 @@ workbox.routing.registerRoute(
 workbox.routing.registerRoute(
     new RegExp('https://scontent\.cdninstagram\.com/'),
     workbox.strategies.cacheFirst({
-        cacheName: `${CACHE_NAME}:cache-first`,
+        cacheName: `${CACHE_NAME}:network-first`,
         plugins: [
             // Force Cache
             new workbox.cacheableResponse.Plugin({
