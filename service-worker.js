@@ -13,7 +13,7 @@ workbox.routing.registerRoute(
 // Force Caching of Opaque Responses
 // https://developers.google.com/web/tools/workbox/reference-docs/latest/workbox.cacheableResponse.Plugin
 workbox.routing.registerRoute(
-    new RegExp('http://scontent\.cdninstagram\.com'),
+    new RegExp('https://scontent\.cdninstagram\.com'),
     workbox.strategies.cacheFirst({
         cacheName: `${CACHE_NAME}:cache-first`,
         plugins: [
