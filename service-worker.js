@@ -5,34 +5,22 @@ const CACHE_NAME = 'fatschi-pwa';
 
 workbox.routing.registerRoute(
     /.*\.(?:html|js)/,
-    workbox.strategies.cacheFirst({
-        cacheName: `${CACHE_NAME}:network-first`,
+    workbox.strategies.StaleWhileRevalidate({
+        cacheName: `${CACHE_NAME}:static`,
     }),
 );
 
 workbox.routing.registerRoute(
     new RegExp('https://scontent\.cdninstagram\.com/'),
-    workbox.strategies.cacheFirst({
-        cacheName: `${CACHE_NAME}:network-first`,
-        plugins: [
-            // Force Cache
-            new workbox.cacheableResponse.Plugin({
-                statuses: [0, 200], // One or more status codes that a Response can have and be considered cacheable.
-            }),
-        ]
+    workbox.strategies.StaleWhileRevalidate({
+        cacheName: `${CACHE_NAME}:images`
     }),
 );
 
 workbox.routing.registerRoute(
     new RegExp('https://api\.instagram\.com/'),
-    workbox.strategies.cacheFirst({
-        cacheName: `${CACHE_NAME}:network-first`,
-        plugins: [
-            // Force Cache
-            new workbox.cacheableResponse.Plugin({
-                statuses: [0, 200], // One or more status codes that a Response can have and be considered cacheable.
-            }),
-        ]
+    workbox.strategies.StaleWhileRevalidate({
+        cacheName: `${CACHE_NAME}:api`
     }),
 );
 
