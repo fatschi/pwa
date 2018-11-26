@@ -1,7 +1,7 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.0.0/workbox-sw.js');
 workbox.core.setLogLevel(workbox.core.LOG_LEVELS.debug);
 
-const CACHE_NAME = 'workbox:cross-origin';
+const CACHE_NAME = 'fatschi-pwa';
 
 workbox.routing.registerRoute(
     /.*\.(?:html)/,
