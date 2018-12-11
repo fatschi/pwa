@@ -3,7 +3,7 @@
   "short_name": "fatschiblog",
   "start_url": "/pwa/index.html",
   "display": "standalone",
-  "orientation": "portrait",
+  "orientation": "landscape",
   "background_color": "#77bcd7",
   "theme_color": "#77bcd7",
   "icons": [

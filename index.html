@@ -38,22 +38,6 @@
             navigator.serviceWorker.register(`${prefix}/service-worker.js`);
         });
     }
-    const url = 'https://api.instagram.com/v1/users/4725130256/media/recent?access_token=4725130256.1677ed0.3eddbc3d1f0e458486c8f9a99f449552';
-    fetch(url)
-        .then((resp) => resp.json())
-        .then(function (response) {
-            if (response.data) {
-                const newImages = response.data.forEach((image) => {
-                    let img = document.createElement("img");
-                    img.src = image.images.standard_resolution.url;
-                    document.getElementById('insta').appendChild(img);
-                });
-            }
-        })
-        .catch(function (error) {
-            console.error(JSON.stringify(error));
-        });
-
 </script>
 
 </html>
