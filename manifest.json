@@ -1,6 +1,6 @@
 {
-  "name": "fatschissuperduperfahrradreiseblog.de",
-  "short_name": "fatschiblog",
+  "name": "fatschissuperduperfahrradreiseblog",
+  "short_name": "fatschis Blog",
   "start_url": "/pwa/index.html",
   "display": "standalone",
   "orientation": "landscape",
