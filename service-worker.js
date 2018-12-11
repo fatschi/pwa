@@ -10,7 +10,7 @@ workbox.routing.registerRoute(
     }),
 );
 
-/*workbox.routing.registerRoute(
+workbox.routing.registerRoute(
     new RegExp('https://scontent\.cdninstagram\.com/'),
     workbox.strategies.staleWhileRevalidate({
         cacheName: `${CACHE_NAME}:images`
@@ -22,7 +22,7 @@ workbox.routing.registerRoute(
     workbox.strategies.staleWhileRevalidate({
         cacheName: `${CACHE_NAME}:api`
     }),
-);*/
+);
 
 self.addEventListener('install', function () {
     // For Develop Only
