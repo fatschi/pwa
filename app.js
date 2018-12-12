@@ -1,4 +1,7 @@
-const { Component, h, render } = preact
+const { Component, h, render } = preact;
+if (screen) {
+    screen.orientation.lock('landscape');
+}
 
 const startUrl = 'https://api.instagram.com/v1/users/4725130256/media/recent?access_token=4725130256.1677ed0.3eddbc3d1f0e458486c8f9a99f449552';
 const fetchUrl = function (sUrl) {
